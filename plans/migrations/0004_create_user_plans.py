@@ -13,7 +13,10 @@ def create_userplans(apps, schema_editor):
        print('\n\n')
        print('*' * 150)
        print('**', "Perhaps your User model is using django-tenants.")
-       print('**', "please run 'python manage.py migrate_schemas --shared' again")
+       print('**', "Now,  ")
+       print('**', "1. You need to disable django-plans (in settings)")
+       print('**', "2. Create a default plan")
+       print('**', "3. run 'python manage.py migrate_schemas --shared' again")
        print('*' * 150)
        print('\n\n')
 
