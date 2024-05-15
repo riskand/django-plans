@@ -761,7 +761,7 @@ class PlanPricingManager(models.Manager):
 class AbstractPlanPricing(BaseMixin, models.Model):
     plan = models.ForeignKey("Plan", on_delete=models.CASCADE)
     pricing = models.ForeignKey("Pricing", on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=7, decimal_places=2, db_index=True)
+    price = models.DecimalField(max_digits=9, decimal_places=2, db_index=True)
     order = models.IntegerField(default=0, null=False, blank=False)
     has_automatic_renewal = models.BooleanField(
         _("has automatic renewal"),
