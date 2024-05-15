@@ -6,7 +6,10 @@ from django.db import migrations
 def create_userplans(apps, schema_editor):
     from plans.base.models import AbstractUserPlan
 
-    AbstractUserPlan.get_concrete_model().create_for_users_without_plan()
+    try:
+       AbstractUserPlan.get_concrete_model().create_for_users_without_plan()
+    except Exception as e:
+       print(type(e).__name__, e)
 
 
 class Migration(migrations.Migration):
