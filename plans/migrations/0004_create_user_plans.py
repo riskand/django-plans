@@ -10,10 +10,10 @@ def create_userplans(apps, schema_editor):
     try:
        AbstractUserPlan.get_concrete_model().create_for_users_without_plan()
     except ProgrammingError:
-       print(\n\n, '*' * 150)
+       print('\n\n', '*' * 150)
        print('**', "Perhaps your User model is using django-tenants.")
        print('**', "please run 'python manage.py migrate_schemas --shared' again")
-       print(\n\n, '*' * 150)
+       print('\n\n', '*' * 150)
 
 
 class Migration(migrations.Migration):
