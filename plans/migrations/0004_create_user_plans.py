@@ -7,19 +7,7 @@ from django.db.utils import ProgrammingError
 def create_userplans(apps, schema_editor):
     from plans.base.models import AbstractUserPlan
 
-    try:
-       AbstractUserPlan.get_concrete_model().create_for_users_without_plan()
-    except ProgrammingError:
-       print('\n\n')
-       print('*' * 150)
-       print('**', "Perhaps your User model is using django-tenants.")
-       print('**', "Now,  ")
-       print('**', "1. You need to disable django-plans (in settings)")
-       print('**', "2. Create a default plan")
-       print('**', "3. run 'python manage.py migrate_schemas --shared' again")
-       print('*' * 150)
-       print('\n\n')
-
+    AbstractUserPlan.get_concrete_model().create_for_users_without_plan()
 
 class Migration(migrations.Migration):
     dependencies = [
