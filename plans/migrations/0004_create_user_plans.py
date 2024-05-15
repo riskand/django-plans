@@ -7,7 +7,7 @@ from django.db.utils import ProgrammingError
 def create_userplans(apps, schema_editor):
     from plans.base.models import AbstractUserPlan
 
-    AbstractUserPlan.get_concrete_model().create_for_users_without_plan()
+    #AbstractUserPlan.get_concrete_model().create_for_users_without_plan()
 
 class Migration(migrations.Migration):
     dependencies = [
