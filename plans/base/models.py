@@ -56,8 +56,8 @@ class BaseMixin(models.Model):
 
     @classmethod
     def get_concrete_model(cls):
-        #return load_model("plans", cls.__name__.replace("Abstract", ""))
-        return load_model(settings.USER_PLAN_APP_MODEL, cls.__name__.replace("Abstract", ""))
+        return load_model("plans", cls.__name__.replace("Abstract", ""))
+        #return load_model(settings.USER_PLAN_APP_MODEL, cls.__name__.replace("Abstract", ""))
 
 
 class AbstractPlan(BaseMixin, OrderedModel):
