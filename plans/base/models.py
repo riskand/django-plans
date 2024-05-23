@@ -528,6 +528,20 @@ class AbstractUserPlan(BaseMixin, models.Model):
             AbstractUserPlan.get_concrete_model().create_for_user(user)
         return userplans
 
+    @classmethod
+    def update_plan_for_user(self, user, plan):
+
+        if isinstance(plan, int):
+           plan = AbstractPlan.get_concrete_model().objects.get(id=plan)
+
+        UserPlan = AbstractUserPlan.get_concrete_model()
+        userplan = UserPlan.objects.get(user=user)
+        userplan.plan = plan
+        userplan.save()
+
+        return userplan
+
+
     def get_current_plan(self):
         """Tiny helper, very usefull in templates"""
         return AbstractPlan.get_concrete_model().get_current_plan(self.user)

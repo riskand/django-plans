@@ -13,6 +13,7 @@ from plans.base.models import (
     AbstractUserPlan,
 )
 
+from django.utils.translation import gettext_lazy as _
 
 class DetailFieldMixin:
     # Tests additional field can be added to the models
