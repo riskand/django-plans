@@ -57,7 +57,6 @@ class BaseMixin(models.Model):
     @classmethod
     def get_concrete_model(cls):
         return load_model("plans", cls.__name__.replace("Abstract", ""))
-        #return load_model(settings.USER_PLAN_APP_MODEL, cls.__name__.replace("Abstract", ""))
 
 
 class AbstractPlan(BaseMixin, OrderedModel):
@@ -592,7 +591,7 @@ class AbstractRecurringUserPlan(BaseMixin, models.Model):
     )
     amount = models.DecimalField(
         _("amount"),
-        max_digits=7,
+        max_digits=9,
         decimal_places=2,
         db_index=True,
         null=True,
@@ -877,7 +876,7 @@ class AbstractOrder(BaseMixin, models.Model):
         blank=True,
     )
     amount = models.DecimalField(
-        _("amount"), max_digits=7, decimal_places=2, db_index=True
+        _("amount"), max_digits=9, decimal_places=2, db_index=True
     )
     tax = models.DecimalField(
         _("tax"), max_digits=4, decimal_places=2, db_index=True, null=True, blank=True
@@ -1127,11 +1126,11 @@ class AbstractInvoice(BaseMixin, models.Model):
     issued_duplicate = models.DateField(db_index=True, null=True, blank=True)
     selling_date = models.DateField(db_index=True, null=True, blank=True)
     payment_date = models.DateField(db_index=True)
-    unit_price_net = models.DecimalField(max_digits=7, decimal_places=2)
+    unit_price_net = models.DecimalField(max_digits=9, decimal_places=2)
     quantity = models.IntegerField(default=1)
-    total_net = models.DecimalField(max_digits=7, decimal_places=2)
-    total = models.DecimalField(max_digits=7, decimal_places=2)
-    tax_total = models.DecimalField(max_digits=7, decimal_places=2)
+    total_net = models.DecimalField(max_digits=9, decimal_places=2)
+    total = models.DecimalField(max_digits=9, decimal_places=2)
+    tax_total = models.DecimalField(max_digits=9, decimal_places=2)
     tax = models.DecimalField(
         max_digits=4, decimal_places=2, db_index=True, null=True, blank=True
     )  # Tax=None is whet tax is not applicable
